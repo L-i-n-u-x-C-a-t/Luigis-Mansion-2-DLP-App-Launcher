@@ -40,11 +40,11 @@ GRAPHICS	:= res/drawable
 ROMFS		:= romfs
 GFXBUILD	:= $(ROMFS)/res/drawable
 
-APP_TITLE           :=	3DSident
-APP_DESCRIPTION     :=	Identity tool for the Nintendo 3DS.
-APP_AUTHOR          :=	Joel16
+APP_TITLE           :=	LM2DLPAL
+APP_DESCRIPTION     :=	Luigi's mansion download play app launcher
+APP_AUTHOR          :=	LinuxCat
 VERSION_MAJOR       :=  0
-VERSION_MINOR       :=  8
+VERSION_MINOR       :=  1
 VERSION_MICRO       :=  0
 ICON                :=	res/icon.png
 
