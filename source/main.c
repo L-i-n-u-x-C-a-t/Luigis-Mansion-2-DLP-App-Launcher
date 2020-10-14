@@ -3,47 +3,65 @@
 #include <string.h>
 #include <3ds.h>
 
+
 int main(){
 
 	gfxInitDefault();
 	consoleInit(GFX_TOP, NULL);
+	amInit();
+	cfguInit();
 
-	printf("Luigi's Mansion Download Play App launcher\n"); 
-	printf("Press A to launch the EUR app, B to launch the US app,\nand X to launch the JP app.\n");
-	printf("Press L to see help\n");
-	printf("Press START to exit\n");
-	u8 helpison = 0;
-	while (apt MainLoop()) {
+	
+	bool helpison = false;
+	while (aptMainLoop()) {
 
 		gspWaitForVBlank(); 
 		gfxSwapBuffers(); 
 		hidScanInput();
 
-		u32 kDown = hidkeysDown();
+		u32 kDown = hidKeysDown();
+
+		u8 output = 0;
+		CFGU_SecureInfoGetRegion(&output);
 
 		if (kDown & KEY_START) break;
 
 		if (kDown & KEY_A){
-			aptSetChainloader(0x0004000100076500, 0); //luigi's mansion DlP app - EUR
-			break;
-		}
-		if (kDown & KEY_B){
-			aptSetChainloader(0x0004000100055F00, 0); //luigi's mansion DlP app - US
-			break;
-		}
-		if (kDown & KEY_X){
-		aptSetChainloader(0x0004000100076400, 0); //luigi's mansion DlP app - JP
-		break;
-		}
-	
-	
-		if (kDown & KEY_L){
-			if (helpison == 0){
-				printf("Q : Where can i find the Luigi's mansion Download\nPlay cia file?\n");
-				printf("A : in the full game files, in the folder\n /content2.dlp/romfs/, or get it by downoading it using DlP\n");
-				helpison = 1;
+			switch(output){
+				case 0:
+					aptSetChainloader(0x0004000100076400LL, 0); //luigi's mansion DlP app - JP
+				case 1:
+					aptSetChainloader(0x0004000100055F00LL, 0); //luigi's mansion DlP app - US
+				case 2:
+					aptSetChainloader(0x0004000100076500LL, 0); //luigi's mansion DlP app - EUR
+				case 3:
+					aptSetChainloader(0x0004000100076500LL, 0); //same as EUR, but it also work for AUS
+				default:
+					aptSetChainloader(0x0004000100076400LL, 0); //this is the JP one because idk what to put here
+
 			}
+			break;
 		}
+
+		if (helpison == false){
+			consoleClear();
+			printf("Q : Where can i find the Luigi's mansion Download\nPlay cia file?\n");
+			printf("A : in the full game files, in the folder\n /content2.dlp/romfs/, or get it by downoading it using DlP\n");
+			printf("\nNote: if the app doesn't start/crashes, create \nan issue in the github at bit.do/LMHissue");
+		}
+		else{
+			consoleClear();
+			printf("Luigi's Mansion 2 Download Play App launcher\n"); 
+			printf("Press A to launch the multiplayer app.\n");
+			printf("Press L to toggle help\n");
+			printf("Press START to exit\n");
+		}
+
+		if (kDown & KEY_L){
+			helpison = !helpison;
+		}
+			
+		
 	}
 	return 0;
 }
