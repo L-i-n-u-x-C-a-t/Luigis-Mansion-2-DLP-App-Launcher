@@ -52,7 +52,6 @@ ICON                :=	res/icon.png
 BANNER_AUDIO        :=	res/banner.wav
 BANNER_IMAGE        :=	res/banner.png
 RSF_PATH            :=	res/app.rsf
-LOGO                :=	res/logo.lz11
 UNIQUE_ID           :=	0x16000
 PRODUCT_CODE        :=	CTR-C-3DSI
 ICON_FLAGS          :=	nosavebackups,visible
@@ -181,9 +180,6 @@ MAKEROM      ?= makerom
 MAKEROM_ARGS := -elf "$(OUTPUT).elf" -rsf "$(RSF_PATH)" -banner "$(BUILD)/banner.bnr" -icon "$(BUILD)/icon.icn" -DAPP_TITLE="$(APP_TITLE)" -DAPP_PRODUCT_CODE="$(PRODUCT_CODE)" -DAPP_UNIQUE_ID="$(UNIQUE_ID)"
 MAKEROM_ARGS += -major $(VERSION_MAJOR) -minor $(VERSION_MINOR) -micro $(VERSION_MICRO)
 
-ifneq ($(strip $(LOGO)),)
-	MAKEROM_ARGS	+=	 -logo "$(LOGO)"
-endif
 ifneq ($(strip $(ROMFS)),)
 	MAKEROM_ARGS	+=	 -DAPP_ROMFS="$(ROMFS)"
 endif
