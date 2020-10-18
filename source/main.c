@@ -66,7 +66,7 @@ int main(){
 
 		if (kDown & KEY_L){
 			helpison = !helpison;
-                        refreshed = false
+                        refreshed = false;
 		}
 			
 		
