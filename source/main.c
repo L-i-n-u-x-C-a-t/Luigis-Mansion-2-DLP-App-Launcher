@@ -13,6 +13,7 @@ int main(){
 
 	
 	bool helpison = false;
+        bool refreshed = false; //there is probably an easier way to do this
 	while (aptMainLoop()) {
 
 		gspWaitForVBlank(); 
@@ -43,22 +44,29 @@ int main(){
 			break;
 		}
 
-		if (helpison == false){
+		if (helpison == true){
+                    if (refreshed == false){
 			consoleClear();
 			printf("Q : Where can i find the Luigi's mansion Download\nPlay cia file?\n");
 			printf("A : in the full game files, in the folder\n /content2.dlp/romfs/, or get it by downoading it using DlP\n");
 			printf("\nNote: if the app doesn't start/crashes, create \nan issue in the github at bit.do/LMHissue");
+                        refreshed = true;
+                    }
 		}
 		else{
+                    if (refreshed == false){
 			consoleClear();
 			printf("Luigi's Mansion 2 Download Play App launcher\n"); 
 			printf("Press A to launch the multiplayer app.\n");
 			printf("Press L to toggle help\n");
 			printf("Press START to exit\n");
+                        refreshed = true;
+                    }
 		}
 
 		if (kDown & KEY_L){
 			helpison = !helpison;
+                        refreshed = false
 		}
 			
 		
