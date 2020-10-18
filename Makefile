@@ -31,7 +31,7 @@ include $(DEVKITARM)/3ds_rules
 #     - icon.png
 #     - <libctru folder>/default_icon.png
 #---------------------------------------------------------------------------------
-TARGET		:= 3DSident
+TARGET		:= LM2DLPAL
 BUILD		:= build
 SOURCES     := source ../common ../services
 DATA        := data
