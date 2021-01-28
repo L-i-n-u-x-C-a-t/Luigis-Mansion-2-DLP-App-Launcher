@@ -31,14 +31,19 @@ int main(){
 			switch(output){
 				case 0:
 					aptSetChainloader(0x0004000100076400LL, 0); //luigi's mansion DlP app - JP
+					break;
 				case 1:
 					aptSetChainloader(0x0004000100055F00LL, 0); //luigi's mansion DlP app - US
+					break;
 				case 2:
 					aptSetChainloader(0x0004000100076500LL, 0); //luigi's mansion DlP app - EUR
+					break;
 				case 3:
 					aptSetChainloader(0x0004000100076500LL, 0); //same as EUR, but it also work for AUS
+					break;
 				default:
 					aptSetChainloader(0x0004000100076400LL, 0); //this is the JP one because idk what to put here
+					break;
 
 			}
 			break;
