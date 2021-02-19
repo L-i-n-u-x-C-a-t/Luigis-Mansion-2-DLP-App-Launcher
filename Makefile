@@ -52,7 +52,7 @@ ICON                :=	res/icon.png
 BANNER_AUDIO        :=	res/banner.wav
 BANNER_IMAGE        :=	res/banner.png
 RSF_PATH            :=	res/app.rsf
-UNIQUE_ID           :=	0x16000
+UNIQUE_ID           :=	0x16A0E
 PRODUCT_CODE        :=	CTR-C-3DSI
 ICON_FLAGS          :=	nosavebackups,visible
 
